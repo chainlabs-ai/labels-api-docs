@@ -3,6 +3,8 @@ info:
   title: Chainlabs Full Clusters API
   description: "### \n\nThe Chainlabs Full Clusters API allows clients to programmatically retrieve attribution labels for wallet addresses"
   version: 0.1.0
+servers:
+- url: /  # https://api.chainlabs.ai
 paths:
   /labels:
     post:
