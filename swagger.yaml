@@ -87,7 +87,7 @@ components:
                 description: Category of the entity.
                 type: string
                 example: Centralized Finance
-              confidence_level:
+              confidenceLevel:
                 type: string
                 description: Indicates the confidence level of the assigned label.
                 enum:
@@ -101,14 +101,14 @@ components:
               entityName: Binance
               categoryId: CEFI
               category: Centralized Finance
-              confidence_level: high
+              confidenceLevel: high
             - address: 1DcT5Wij5tfb3oVViF8mA8p4WrG98ahZPT
               token: BTC
               entityId: NULL
               entityName: NULL
               categoryId: CEFI
               category: Centralized Finance
-              confidence_level: low
+              confidenceLevel: low
     TokenEnum:
       type: string
       description: "A specific cryptocurrency or token associated with the wallet address."
