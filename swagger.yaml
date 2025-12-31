@@ -3,8 +3,8 @@ info:
   title: Chainlabs Full Clusters API
   description: "### \n\nThe Chainlabs Full Clusters API allows clients to programmatically retrieve attribution labels for wallet addresses"
   version: 0.1.0
-servers:
-- url: /  # https://api.chainlabs.ai
+# servers:
+# - url: /  # https://api.chainlabs.ai
 paths:
   /labels:
     post:
@@ -74,10 +74,12 @@ components:
                 description: Unique integer assigned to the attributed entity.
                 type: integer
                 format: int64
+                nullable: true
                 example: 10
               entityName:
                 description: Official or recognized name of the attributed entity.
                 type: string
+                nullable: true
                 example: Binance
               categoryId:
                 description: Unique ID assigned to the category.
@@ -88,12 +90,7 @@ components:
                 type: string
                 example: Centralized Finance
               confidenceLevel:
-                type: string
-                description: Indicates the confidence level of the assigned label.
-                enum:
-                  - high
-                  - mid
-                  - low
+                $ref: '#/components/schemas/ConfidenceLevelEnum'
           example:
             - address: 34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo
               token: BTC
@@ -104,15 +101,22 @@ components:
               confidenceLevel: high
             - address: 1DcT5Wij5tfb3oVViF8mA8p4WrG98ahZPT
               token: BTC
-              entityId: NULL
-              entityName: NULL
+              entityId: null
+              entityName: null
               categoryId: CEFI
               category: Centralized Finance
               confidenceLevel: low
     TokenEnum:
       type: string
-      description: "A specific cryptocurrency or token associated with the wallet address."
-      oneOf:
-      - title: BTC
-      - title: TRX
-      - title: ETH
+      description: A specific cryptocurrency or token associated with the wallet address.
+      enum:
+        - BTC
+        - TRX
+        - ETH
+    ConfidenceLevelEnum:
+      type: string
+      description: Confidence level of the assigned label.
+      enum:
+        - high
+        - mid
+        - low
