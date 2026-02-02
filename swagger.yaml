@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Chainlabs Full Clusters API
-  description: "### \n\nThe Chainlabs Full Clusters API allows clients to programmatically retrieve attribution labels for wallet addresses"
+  description: "### \n\nAccess Chainlabs’ complete cluster-level blockchain labeling dataset.\nCovers hundreds of millions of inferred labels across BTC, TRX, and EVM chains (Solana forthcoming), including sanctions and illicit-risk categories—designed for compliance, risk, and analytics use cases."
   version: 0.1.0
 # servers:
 # - url: /  # https://api.chainlabs.ai
