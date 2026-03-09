@@ -3,8 +3,8 @@ info:
   title: Chainlabs Full Clusters API
   description: "### \n\nAccess Chainlabs’ complete cluster-level blockchain labeling dataset.\nCovers hundreds of millions of inferred labels across BTC, TRX, and EVM chains (Solana forthcoming), including sanctions and illicit-risk categories—designed for compliance, risk, and analytics use cases."
   version: 0.1.0
-# servers:
-# - url: /  # https://api.chainlabs.ai
+servers:
+  - url: https://api.chainlabs.ai
 paths:
   /labels:
     post:
