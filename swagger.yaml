@@ -5,7 +5,34 @@ info:
   version: 0.1.0
 servers:
   - url: https://api.chainlabs.ai
+security:
+  - bearerAuth: []
 paths:
+  /auth:
+    post:
+      tags:
+        - Authentication
+      summary: Authenticate and get access token
+      description: Submit your client_id and api_key to receive an access token. Include this token in the Authorization header for all subsequent API requests.
+      operationId: authenticate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Invalid credentials
+      security: []
   /labels:
     post:
       tags:
@@ -37,8 +64,16 @@ paths:
           description: Unauthorized
         '500':
           description: Internal server error
+      security:
+        - bearerAuth: []
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained from /auth endpoint
   schemas:
     LabelsRequest:
       type: object
@@ -120,3 +155,33 @@ components:
         - high
         - mid
         - low
+    AuthRequest:
+      type: object
+      required:
+        - client_id
+        - api_key
+      properties:
+        client_id:
+          type: string
+          description: Your client identifier
+          example: your_client_id
+        api_key:
+          type: string
+          description: Your API key
+          example: your_api_key
+    AuthResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        token:
+          type: string
+          description: JWT token for API authentication
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        client_id:
+          type: string
+          example: your_client_id
+        error:
+          type: string
+          description: Error message if authentication failed
