@@ -6,6 +6,11 @@ window.onload = function() {
     url: "swagger.yaml",
     dom_id: '#swagger-ui',
     deepLinking: true,
+
+    // Disable "Try it out" / request execution from the UI
+    tryItOutEnabled: false,
+    supportedSubmitMethods: [],
+
     presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIStandalonePreset
